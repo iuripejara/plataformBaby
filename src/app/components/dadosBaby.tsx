@@ -17,7 +17,7 @@ export default function DadosBaby () {
         <div className={`py-5 flex flex-col justify-center items-center shadow-2xl ${lora.className} `}>
             {/* Nome */}
             <div className="pb-2">
-                <p className={`text-gray-500 text-md mb-1 ${nunito.className} `}>My babys name is</p>
+                <p className={`text-gray-500 text-md mb-1 ${nunito.className} `}>Nome do meu Bebe</p>
                 <h1 className="text-3xl text-center font-bold text-gray-900 ">Ivy</h1>
             </div>
             
@@ -25,7 +25,9 @@ export default function DadosBaby () {
                 {/* Ano */}
                 <div className="pb-2">
                     <p className={`text-gray-500 text-sm ${nunito.className}`}>Idade</p>
-                    <h1 className="text-shadow-md text-md font-semibold text-pink-400"><IdadeFornatada dataNacimento={dataDeNascimentoDoBebe }/></h1>
+                    <h1 className="text-shadow-md text-md font-semibold text-pink-400">
+                        <IdadeFornatada dataNacimento={dataDeNascimentoDoBebe }/>
+                    </h1>
                 </div>
                 {/* Genero */}
                 <div className="pb-2">
