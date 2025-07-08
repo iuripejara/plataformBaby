@@ -1,0 +1,21 @@
+{
+  "name": "App da Minha Filha",
+  "short_name": "FilhaApp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff69b4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/iconsIvi.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/iconsIvi512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

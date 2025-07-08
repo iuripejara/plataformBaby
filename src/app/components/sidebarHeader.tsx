@@ -12,6 +12,6 @@ export default function SidebarHeader() {
                     className="object-cover rounded-t-md"
                 />
             </div>
-        </div> 
+        </div> //this div is the container for the image
     )
 }
