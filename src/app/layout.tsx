@@ -1,34 +1,27 @@
 import "./globals.css";
 import SidebarHeader from "./components/sidebarHeader";
 
-export const metadata = {
-  title: "App da Minha Filha",
-  description: "Feito com amor pelo papai ❤️",
-  icons: {
-    icon: "/iconsIvi.png",
-  },
-};
+import type { Metadata } from 'next' // Importar Metadata
 
-export const generateViewport = () => ({
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
-  themeColor: "#ff69b4",
-});
+export const metadata: Metadata = { // Tipar metadata
+  title: 'Plataforma da Filha',
+  description: 'Uma plataforma divertida para minha filha',
+  manifest: '/manifest.json',
+}
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="pt">
-      <body className="w-full mx-auto">
-        <div>
-          <SidebarHeader />
+    <html lang="en">
+      <body className=" w-full mx-auto">
+        <div className="">
+          <SidebarHeader/>
           {children}
         </div>
+        
       </body>
     </html>
   );
