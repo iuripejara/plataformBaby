@@ -1,7 +1,7 @@
 "use client";
 
 type idadeProps = {
-    dataNacimento :string
+  dataNacimento :string
 }
 
 export default function IdadeFornatada({dataNacimento}: idadeProps){
