@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className=" w-full mx-auto">
+      <body className="w-full mx-auto">
         <div className="">
           <SidebarHeader/>
           {children}

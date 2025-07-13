@@ -1,11 +1,7 @@
 "use client"
 import {LineChart,Line, CartesianGrid, XAxis, YAxis, Tooltip} from "recharts"
 import {Nunito,Lora} from "next/font/google"
-
-
-
-
-
+import Buntton from "./button"
 
 const nunito = Nunito({
     weight:"600",
@@ -25,10 +21,11 @@ type PesoBaby = {
 };
 
 type PesoProps = {
-    pesogeral : PesoBaby[]
+    pesogeral : PesoBaby[],
+    onNovoPesoAdicionado : () =>void ;
 }
 
-export default function GraficoSimpges({pesogeral} :PesoProps){
+export default function GraficoSimpges({pesogeral,onNovoPesoAdicionado} :PesoProps){
     return(
         <div className="flex justify-center items-center mt-10 p-2 ">
             <div 
@@ -54,11 +51,15 @@ export default function GraficoSimpges({pesogeral} :PesoProps){
                 
 
                 <div className="flex justify-center">
-                    <button 
-                     className={`text-md mt-5 mb-3 w-1/2 bg-white text-pink-600 border border-pink-300 px-4 py-2 rounded-md hover:bg-pink-200 transition-colors ${nunito.className}`}
-                >
-                    Adicionar peso
-                </button>
+                    <Buntton
+                        
+                        className={`
+                            text-md mt-5 mb-3  bg-white text-pink-600 border
+                            border-pink-300 px-4 py-2 rounded-md hover:bg-pink-200 transition-colors ${nunito.className}
+                        `}
+                        textInf=" Adicionar peso"
+                        onNovoPesoAdicionado={onNovoPesoAdicionado}
+                    />
                 </div>
             </div>
         </div>
