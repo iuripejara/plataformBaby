@@ -1,37 +1,43 @@
-import { PrismaClient } from "@/generated/prisma";
+// app/api/peso/route.ts
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-
-
-const prisma = new PrismaClient();
-
 export async function POST(req: Request) {
-    
-    const body = await req.json();
+  const body = await req.json();
+  const { peso, data_peso } = body;
 
-    const { peso, data_peso } = body;
+  if (!peso || !data_peso) {
+    return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
+  }
 
-    if (!peso || !data_peso) {
-        return NextResponse.json({ error: "Datos invalidos" }, { status: 400 });
-    }
+  try {
+    const novoPeso = await prisma.peso.create({
+      data: {
+        peso: peso.toString(),
+        data_peso: new Date(data_peso),
+      },
+    });
 
-    try{
-        const novoPeso = await prisma.peso.create({
-            data: {
-                peso: peso.toString(),
-                data_peso: new Date(data_peso)
-            }
-        });
-        return NextResponse.json(novoPeso)
-    }catch(error){
-        return NextResponse.json({ error: "Erro ao inserir peso", details: error }, { status:500 })
-    }
+    return NextResponse.json(novoPeso);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Erro ao inserir peso", details: `${error}` },
+      { status: 500 }
+    );
+  }
 }
 
 export async function GET() {
-    const prisma = new PrismaClient();
+  try {
     const pesos = await prisma.peso.findMany({
-        orderBy: { data_peso: "asc" },
+      orderBy: { data_peso: "asc" },
     });
+
     return NextResponse.json(pesos);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Erro ao buscar pesos", details: `${error}` },
+      { status: 500 }
+    );
+  }
 }
